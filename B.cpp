@@ -7,11 +7,12 @@ int main()
 	cin >> N >> M;
 	vector<int>         A(M);
 	vector<vector<int>> X(N, vector<int>(M));
+	vector<int>         intake(M, 0);
+
 	for (int i = 0; i < M; i++)
 	{
 		cin >> A[i];
 	}
-
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < M; j++)
@@ -20,7 +21,6 @@ int main()
 		}
 	}
 
-	vector<int> intake(M, 0);
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < M; j++)

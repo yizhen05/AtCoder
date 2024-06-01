@@ -10,9 +10,7 @@ int main()
 	{
 		A[i] = i + 1;
 	}
-
 	reverse(A.begin() + (L - 1), A.begin() + R);
-
 	for (int i = 0; i < N; i++)
 	{
 		cout << A[i] << " ";
