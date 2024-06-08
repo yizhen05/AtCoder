@@ -14,4 +14,5 @@ int main()
 	if (upper > lower) transform(S.begin(), S.end(), S.begin(), ::toupper);
 
 	cout << S << endl;
+	return 0;
 }
