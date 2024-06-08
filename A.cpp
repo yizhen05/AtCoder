@@ -3,18 +3,21 @@ using namespace std;
 
 int main()
 {
-	int N, L, R;
-	cin >> N >> L >> R;
-	vector<int> A(N);
+	int N, M;
+	cin >> N >> M;
+	vector<int> H(N);
+	for (int i = 0; i < N; i++) cin >> H.at(i);
+
+	int count = 0;
 	for (int i = 0; i < N; i++)
 	{
-		A[i] = i + 1;
+		count += H.at(i);
+		if (count > M)
+		{
+			cout << i << endl;
+			return 0;
+		}
 	}
-	reverse(A.begin() + (L - 1), A.begin() + R);
-	for (int i = 0; i < N; i++)
-	{
-		cout << A[i] << " ";
-	}
-	cout << endl;
+	cout << N << endl;
 	return 0;
 }
