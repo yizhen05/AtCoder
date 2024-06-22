@@ -3,16 +3,21 @@ using namespace std;
 
 int main()
 {
-	string S;
-	getline(cin, S);
-
-	int lower = 0;
-	int upper = 0;
-	for (char c : S) islower(c) ? lower++ : upper++;
-
-	if (lower >= upper) transform(S.begin(), S.end(), S.begin(), ::tolower);
-	if (upper > lower) transform(S.begin(), S.end(), S.begin(), ::toupper);
-
-	cout << S << endl;
+	int N;
+	cin >> N;
+	vector<int> A(2 * N);
+	for (int i = 0; i < 2 * N; i++)
+	{
+		cin >> A.at(i);
+	}
+	int count = 0;
+	for (int i = 0; i < 2 * N; i++)
+	{
+		if (A[i] == A[i + 2])
+		{
+			count++;
+		}
+	}
+	cout << count << endl;
 	return 0;
 }
