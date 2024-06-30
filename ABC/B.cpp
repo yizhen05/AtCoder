@@ -3,7 +3,8 @@ using namespace std;
 using ll = long long;
 int main()
 {
-	ll H, W, N;
-	cin >> H >> W >> N;
+	string S, T;
+	cin >> S >> T;
+
 	return 0;
 }

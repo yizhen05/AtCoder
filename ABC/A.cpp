@@ -5,8 +5,13 @@ int main()
 {
 	string s;
 	cin >> s;
-	int d = s.length();
-	while (s.at(d - 1) != '.') d--;
-	cout << s.substr(d) << endl;
+	if (s[2] != 'R' && s[0] != 'M')
+	{
+		cout << "Yes" << endl;
+	}
+	else
+	{
+		cout << "No" << endl;
+	}
 	return 0;
 }
