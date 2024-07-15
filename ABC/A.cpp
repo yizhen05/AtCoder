@@ -3,15 +3,15 @@ using namespace std;
 
 int main(void)
 {
-	string s;
-	cin >> s;
-	if (s[2] != 'R' && s[0] != 'M')
-	{
-		cout << "Yes" << endl;
-	}
+	int    R, G, B;
+	string C;
+	cin >> R >> G >> B;
+	cin >> C;
+
+	if (C == "Red") cout << min(G, B) << endl;
+	else if (C == "Green")
+		cout << min(R, B) << endl;
 	else
-	{
-		cout << "No" << endl;
-	}
+		cout << min(R, G) << endl;
 	return 0;
 }
