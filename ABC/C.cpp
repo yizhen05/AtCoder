@@ -1,32 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
+
 int main()
 {
-	ll         N;
-	vector<ll> L(N);
-	vector<ll> R(N);
-	cin >> N;
-	for (ll i = 0; i < N; i++)
+	int    N, K;
+	string S;
+	cin >> N >> K >> S;
+
+	sort(S.begin(), S.end());
+	set<string> uniquePermutations;
+	do
 	{
-		cin >> L[i] >> R[i];
-	}
-	vector<ll> x(N);
-	vector<ll> sorted_l(N);
-	vector<ll> sorted_r(N);
+		uniquePermutations.insert(S);
+	} while (next_permutation(S.begin(), S.end()));
 
-	copy(L.begin(), L.end(), sorted_l.begin());
-	copy(R.begin(), R.end(), sorted_r.begin());
-
-	// Sort the vectors
-	sort(sorted_l.begin(), sorted_l.end());
-	sort(sorted_r.begin(), sorted_r.end());
-
-	ll L, R;
-	ll count = 0;
-	for (ll i = 0; i < N; i++)
+	int count = 0;
+	for (const auto& permutation : uniquePermutations)
 	{
-		ll li = -L[i];
-		ll ri = -R[i];
+		bool hasKPalindrome = false;
+		for (int i = 0; i <= permutation.size() - K; ++i)
+		{
+			bool isPalindrome = true;
+			for (int j = 0; j < K / 2; ++j)
+			{
+				if (permutation[i + j] != permutation[i + K - 1 - j])
+				{
+					isPalindrome = false;
+					break;
+				}
+			}
+			if (isPalindrome)
+			{
+				hasKPalindrome = true;
+				break;
+			}
+		}
+		if (!hasKPalindrome)
+		{
+			count++;
+		}
 	}
+
+	cout << count << endl;
+	return 0;
 }
