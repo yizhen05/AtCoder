@@ -3,7 +3,6 @@ using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
 	int N, T, P;
 	cin >> N >> T >> P;
 	vector<int> L(N);
@@ -45,10 +44,6 @@ int main()
 			}
 		}
 	}
-=======
-	int xa, ya, xb, yb, xc, yc;
-	cin >> xa >> ya >> xb >> yb >> xc >> yc;
->>>>>>> 85fe0bf52d3d4bd9bf1e554b931966e4da013ffc
 
 	return 0;
 }
