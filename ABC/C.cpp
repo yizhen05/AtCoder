@@ -1,46 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
 int main()
 {
-	int    N, K;
-	string S;
-	cin >> N >> K >> S;
+	ll N, X, Y;
+	cin >> N >> X >> Y;
+	vector<ll> A(N), B(N);
 
-	sort(S.begin(), S.end());
-	set<string> uniquePermutations;
-	do
-	{
-		uniquePermutations.insert(S);
-	} while (next_permutation(S.begin(), S.end()));
+	for (ll i = 0; i < N; i++) cin >> A[i];
+	for (ll i = 0; i < N; i++) cin >> B[i];
 
-	int count = 0;
-	for (const auto& permutation : uniquePermutations)
+	sort(A.begin(), A.end(), greater<ll>());
+
+	ll sweetSum   = 0;
+	ll sweetCount = N;
+	for (ll i = 0; i < N; i++)
 	{
-		bool hasKPalindrome = false;
-		for (int i = 0; i <= permutation.size() - K; ++i)
+		sweetSum += A[i];
+		if (sweetSum > X)
 		{
-			bool isPalindrome = true;
-			for (int j = 0; j < K / 2; ++j)
-			{
-				if (permutation[i + j] != permutation[i + K - 1 - j])
-				{
-					isPalindrome = false;
-					break;
-				}
-			}
-			if (isPalindrome)
-			{
-				hasKPalindrome = true;
-				break;
-			}
-		}
-		if (!hasKPalindrome)
-		{
-			count++;
+			sweetCount = i + 1;
+			break;
 		}
 	}
 
-	cout << count << endl;
+	// しょっぱさ基準で降順にソート
+	sort(B.begin(), B.end(), greater<ll>());
+
+	ll saltySum   = 0;
+	ll saltyCount = N;
+	for (ll i = 0; i < N; i++)
+	{
+		saltySum += B[i];
+		if (saltySum > Y)
+		{
+			saltyCount = i + 1;
+			break;
+		}
+	}
+
+	cout << min(sweetCount, saltyCount) << endl;
+
 	return 0;
 }

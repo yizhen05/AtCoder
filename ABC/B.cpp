@@ -3,47 +3,45 @@ using namespace std;
 
 int main()
 {
-	int N, T, P;
-	cin >> N >> T >> P;
-	vector<int> L(N);
-	int         count = 0;
-
-	for (int i = 0; i < N; i++)
+	int H, W;
+	cin >> H >> W;
+	int Si, Sj;
+	cin >> Si >> Sj;
+	Si--;
+	Sj--;
+	vector<vector<char>> C(H, vector<char>(W));
+	for (int i = 0; i < H; i++)
 	{
-		cin >> L[i];
-		if (L[i] >= T)
+		for (int j = 0; j < W; j++)
 		{
-			count++;
-			if (count >= P)
-			{
-				cout << "0" << endl;
-				return 0;
-			}
+			cin >> C[i][j];
 		}
 	}
 
-	int days = 0;
+	string X;
+	cin >> X;
 
-	while (count < P)
+	for (char i : X)
 	{
-		days++;
-		for (int i = 0; i < N; i++)
+		if (i == 'L' && Sj - 1 >= 0 && C[Si][Sj - 1] == '.')
 		{
-			if (L[i] < T)
-			{
-				L[i]++;
-				if (L[i] == T)
-				{
-					count++;
-					if (count == P)
-					{
-						cout << days << endl;
-						return 0;
-					}
-				}
-			}
+			Sj--;
+		}
+		if (i == 'R' && Sj + 1 < W && C[Si][Sj + 1] == '.')
+		{
+			Sj++;
+		}
+		if (i == 'U' && Si - 1 >= 0 && C[Si - 1][Sj] == '.')
+		{
+			Si--;
+		}
+		if (i == 'D' && Si + 1 < H && C[Si + 1][Sj] == '.')
+		{
+			Si++;
 		}
 	}
+
+	cout << (Si + 1) << " " << (Sj + 1) << endl;
 
 	return 0;
 }

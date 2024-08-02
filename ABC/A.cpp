@@ -3,27 +3,29 @@ using namespace std;
 
 int main()
 {
-	int R;
-	cin >> R;
-	if (R < 100)
+	int N;
+	cin >> N;
+	vector<string> S(N);
+	bool           flag = false;
+
+	for (int i = 0; i < N; i++)
 	{
-		cout << 100 - R << endl;
-		return 0;
+		cin >> S[i];
+		if (S[i] == "sweet")
+		{
+			if (flag && i != N - 1)
+			{
+				cout << "No" << endl;
+				return 0;
+			}
+			flag = true;
+		}
+		else
+		{
+			flag = false;
+		}
 	}
-	if (R < 200)
-	{
-		cout << 200 - R << endl;
-		return 0;
-	}
-	if (R < 300)
-	{
-		cout << 300 - R << endl;
-		return 0;
-	}
-	if (R < 400)
-	{
-		cout << 400 - R << endl;
-		return 0;
-	}
+
+	cout << "Yes" << endl;
 	return 0;
 }
