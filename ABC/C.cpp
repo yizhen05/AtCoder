@@ -4,43 +4,48 @@ using ll = long long;
 
 int main()
 {
-	ll N, X, Y;
-	cin >> N >> X >> Y;
-	vector<ll> A(N), B(N);
-
-	for (ll i = 0; i < N; i++) cin >> A[i];
-	for (ll i = 0; i < N; i++) cin >> B[i];
-
-	sort(A.begin(), A.end(), greater<ll>());
-
-	ll sweetSum   = 0;
-	ll sweetCount = N;
+	ll N, M;
+	cin >> N >> M;
+	vector<ll> A(N);
 	for (ll i = 0; i < N; i++)
 	{
-		sweetSum += A[i];
-		if (sweetSum > X)
+		cin >> A[i];
+	}
+
+	ll left   = 0;
+	ll right  = *max_element(A.begin(), A.end());
+	ll answer = 0;
+
+	while (left <= right)
+	{
+		ll mid   = left + (right - left) / 2;
+		ll total = 0;
+
+		for (ll i = 0; i < N; i++)
 		{
-			sweetCount = i + 1;
-			break;
+			total += min(A[i], mid);
+			if (total > M) break;
+		}
+
+		if (total <= M)
+		{
+			answer = mid;
+			left   = mid + 1;
+		}
+		else
+		{
+			right = mid - 1;
 		}
 	}
 
-	// しょっぱさ基準で降順にソート
-	sort(B.begin(), B.end(), greater<ll>());
-
-	ll saltySum   = 0;
-	ll saltyCount = N;
-	for (ll i = 0; i < N; i++)
+	if (answer == *max_element(A.begin(), A.end()))
 	{
-		saltySum += B[i];
-		if (saltySum > Y)
-		{
-			saltyCount = i + 1;
-			break;
-		}
+		cout << "infinite" << endl;
 	}
-
-	cout << min(sweetCount, saltyCount) << endl;
+	else
+	{
+		cout << answer << endl;
+	}
 
 	return 0;
 }

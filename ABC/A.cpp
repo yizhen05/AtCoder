@@ -3,29 +3,24 @@ using namespace std;
 
 int main()
 {
-	int N;
-	cin >> N;
-	vector<string> S(N);
-	bool           flag = false;
+	int Y;
+	cin >> Y;
 
-	for (int i = 0; i < N; i++)
+	if (Y % 400 == 0)
 	{
-		cin >> S[i];
-		if (S[i] == "sweet")
-		{
-			if (flag && i != N - 1)
-			{
-				cout << "No" << endl;
-				return 0;
-			}
-			flag = true;
-		}
-		else
-		{
-			flag = false;
-		}
+		cout << 366 << endl;
 	}
-
-	cout << "Yes" << endl;
+	else if (Y % 100 == 0)
+	{
+		cout << 365 << endl;
+	}
+	else if (Y % 4 == 0)
+	{
+		cout << 366 << endl;
+	}
+	else
+	{
+		cout << 365 << endl;
+	}
 	return 0;
 }

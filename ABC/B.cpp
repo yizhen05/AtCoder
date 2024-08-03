@@ -3,45 +3,31 @@ using namespace std;
 
 int main()
 {
-	int H, W;
-	cin >> H >> W;
-	int Si, Sj;
-	cin >> Si >> Sj;
-	Si--;
-	Sj--;
-	vector<vector<char>> C(H, vector<char>(W));
-	for (int i = 0; i < H; i++)
+	int N;
+	cin >> N;
+	vector<int> A(N);
+	for (int i = 0; i < N; i++) cin >> A[i];
+
+	int first_max = 0, second_max = 0;
+	int first_index = 0, second_index = 0;
+
+	for (int i = 0; i < N; i++)
 	{
-		for (int j = 0; j < W; j++)
+		if (A[i] > first_max)
 		{
-			cin >> C[i][j];
+			second_max   = first_max;
+			second_index = first_index;
+			first_max    = A[i];
+			first_index  = i;
+		}
+		else if (A[i] > second_max)
+		{
+			second_max   = A[i];
+			second_index = i;
 		}
 	}
 
-	string X;
-	cin >> X;
-
-	for (char i : X)
-	{
-		if (i == 'L' && Sj - 1 >= 0 && C[Si][Sj - 1] == '.')
-		{
-			Sj--;
-		}
-		if (i == 'R' && Sj + 1 < W && C[Si][Sj + 1] == '.')
-		{
-			Sj++;
-		}
-		if (i == 'U' && Si - 1 >= 0 && C[Si - 1][Sj] == '.')
-		{
-			Si--;
-		}
-		if (i == 'D' && Si + 1 < H && C[Si + 1][Sj] == '.')
-		{
-			Si++;
-		}
-	}
-
-	cout << (Si + 1) << " " << (Sj + 1) << endl;
+	cout << second_index + 1 << endl;
 
 	return 0;
 }
