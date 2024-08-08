@@ -3,24 +3,24 @@ using namespace std;
 
 int main()
 {
-	int Y;
-	cin >> Y;
+	int A, B, C;
+	cin >> A >> B >> C;
 
-	if (Y % 400 == 0)
+	if (A == 5 && B == 5 && C == 7)
 	{
-		cout << 366 << endl;
+		puts("YES");
+		return 0;
 	}
-	else if (Y % 100 == 0)
+	if (A == 5 && B == 7 && C == 5)
 	{
-		cout << 365 << endl;
+		puts("YES");
+		return 0;
 	}
-	else if (Y % 4 == 0)
+	if (A == 7 && B == 5 && C == 5)
 	{
-		cout << 366 << endl;
+		puts("YES");
+		return 0;
 	}
-	else
-	{
-		cout << 365 << endl;
-	}
+	puts("NO");
 	return 0;
 }
