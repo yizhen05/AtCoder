@@ -3,24 +3,13 @@ using namespace std;
 
 int main()
 {
-	int A, B, C;
-	cin >> A >> B >> C;
-
-	if (A == 5 && B == 5 && C == 7)
+	double n, t, a;
+	cin >> n >> t >> a;
+	if ((n / 2) <= t || (n / 2) <= a)
 	{
-		puts("YES");
+		puts("Yes");
 		return 0;
 	}
-	if (A == 5 && B == 7 && C == 5)
-	{
-		puts("YES");
-		return 0;
-	}
-	if (A == 7 && B == 5 && C == 5)
-	{
-		puts("YES");
-		return 0;
-	}
-	puts("NO");
+	puts("No");
 	return 0;
 }
