@@ -5,40 +5,19 @@ int main()
 {
 	int N;
 	cin >> N;
-	vector<string> S(N);
-	int            M = 0;
 
-	for (int i = 0; i < N; i++)
+	for (int x = 0; x <= N; x++)
 	{
-		cin >> S[i];
-		if (S[i].length() > M)
+		for (int y = 0; y <= N; y++)
 		{
-			M = S[i].length();
+			for (int z = 0; z <= N; z++)
+			{
+				if (x + y + z <= N)
+				{
+					cout << x << " " << y << " " << z << endl;
+				}
+			}
 		}
-	}
-
-	vector<string> T(M, string(N, '*'));
-
-	for (int i = 0; i < N; i++)
-	{
-		int len = S[i].length();
-		for (int j = 0; j < len; j++)
-		{
-			T[j][N - i - 1] = S[i][j];
-		}
-	}
-
-	for (int i = 0; i < M; i++)
-	{
-		while (!T[i].empty() && T[i].back() == '*')
-		{
-			T[i].pop_back();
-		}
-	}
-
-	for (int i = 0; i < M; i++)
-	{
-		cout << T[i] << endl;
 	}
 
 	return 0;

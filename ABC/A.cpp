@@ -3,13 +3,10 @@ using namespace std;
 
 int main()
 {
-	double n, t, a;
-	cin >> n >> t >> a;
-	if ((n / 2) <= t || (n / 2) <= a)
-	{
-		puts("Yes");
-		return 0;
-	}
-	puts("No");
+	string S;
+	cin >> S;
+	int N       = S.size();
+	S.at(N - 1) = '4';
+	cout << S << endl;
 	return 0;
 }
